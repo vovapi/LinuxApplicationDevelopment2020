@@ -23,11 +23,6 @@ int process_pcre(char *pattern_str, char *subject_str, char *result)
 
     pcre2_match_data *match_data;
 
-    // if (argc != 3) {
-        // printf("Exactly two arguments required: a regex and a subject string\n");
-        // return 1;
-    // }
-
     pattern = (PCRE2_SPTR)pattern_str;
     subject = (PCRE2_SPTR)subject_str;
     subject_length = (PCRE2_SIZE)strlen((char *)subject);
@@ -43,8 +38,6 @@ int process_pcre(char *pattern_str, char *subject_str, char *result)
         pcre2_get_error_message(errnum, buffer, sizeof(buffer));
         sprintf(result, "PCRE2 compilation failed at offset %d: %s\n", (int)erroffs,
                buffer);
-        // printf("PCRE2 compilation failed at offset %d: %s\n", (int)erroffs,
-               // buffer);
         return 1;
     }
 
